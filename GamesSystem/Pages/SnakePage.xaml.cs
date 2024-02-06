@@ -1,8 +1,12 @@
-﻿using System;
+﻿using GamesSystem.Games.Snake;
+using GamesSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,22 +16,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GamesSystem.Pages
 {
     /// <summary>
-    /// Interaction logic for LauncherPage.xaml
+    /// Interaction logic for SnakePage.xaml
     /// </summary>
-    public partial class LauncherPage : Page
+    public partial class SnakePage : Page
     {
-        public LauncherPage()
+        public SnakeViewModel SnakeController { get; set; }
+        public SnakePage()
         {
             InitializeComponent();
+            this.Loaded += SnakePage_Loaded;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SnakePage_Loaded(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new SnakePage());   
+            this.DataContext = SnakeController = new SnakeViewModel(canvas);
         }
     }
 }

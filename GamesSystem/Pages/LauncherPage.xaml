@@ -14,7 +14,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <DockPanel Background="#FFF33C3C" >
-            <TextBlock >GAMES HERE</TextBlock>
+            <Button Content="Snake"
+                    Height="40"
+                    Width="60"
+                    Click="Button_Click"/>
         </DockPanel>
         
     </Grid>
