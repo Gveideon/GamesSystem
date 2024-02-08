@@ -8,5 +8,6 @@ namespace GamesSystem.Utils
 {
     public interface IGameController
     {
+        public abstract void Update();
     }
 }

@@ -30,6 +30,8 @@ namespace GamesSystem.Pages
         {
             InitializeComponent();
             this.Loaded += SnakePage_Loaded;
+            this.Focusable = true;
+            this.Loaded += (s, e) => Keyboard.Focus(this);
         }
 
         private void SnakePage_Loaded(object sender, RoutedEventArgs e)

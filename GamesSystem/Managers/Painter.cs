@@ -15,28 +15,28 @@ namespace GamesSystem.Managers
     public class Painter
     {
         public Render Render {  get; set; }   
+        public IGameController Controller { get; set; }
         private DispatcherTimer _timer;
-        public Painter(Render render)
+        public Painter(Render render, IGameController gameController)
         {
             Render = render;
+            Controller = gameController;
             InitTimer();    
         }
 
         public void InitTimer(int interval = 33)
         {
-            _timer = new DispatcherTimer();
+            _timer = new DispatcherTimer(DispatcherPriority.Render);
             _timer.Tick += new EventHandler(Refresh);
-            _timer.Interval = new TimeSpan(interval);
+            _timer.Interval = new TimeSpan(0,0,0,0,interval);
         }
-        public void StartTimer()
+        public void StartTimer()=> _timer?.Start();
+        public void StopTimer() => _timer?.Stop();
+        public void Refresh(object sender, EventArgs e)
         {
-            _timer.Start();
+            Controller?.Update();
+            Render?.Update();
         }
-        public void StopTimer()
-        {
-            _timer.Stop();
-        }
-        public void Refresh(object sender, EventArgs e) => Render.Update();
         
     }
 }

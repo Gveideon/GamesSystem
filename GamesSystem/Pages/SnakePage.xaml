@@ -8,7 +8,17 @@
       d:DesignHeight="500" d:DesignWidth="500"
       Title="SnakePage"
       DataContext="{Binding SnakeController, RelativeSource={RelativeSource Self}}">
-
+    <Page.InputBindings>
+        <KeyBinding Key="Right" Command="{Binding MoveCommand}" CommandParameter="Right"/>
+        <KeyBinding Key="Down" Command="{Binding MoveCommand}" CommandParameter="Down"/>
+        <KeyBinding Key="Left" Command="{Binding MoveCommand}" CommandParameter="Left"/>
+        <KeyBinding Key="Up" Command="{Binding MoveCommand}" CommandParameter="Up"/>
+        <KeyBinding Key="D" Command="{Binding MoveCommand}" CommandParameter="Right"/>
+        <KeyBinding Key="S" Command="{Binding MoveCommand}" CommandParameter="Down"/>
+        <KeyBinding Key="A" Command="{Binding MoveCommand}" CommandParameter="Left"/>
+        <KeyBinding Key="W" Command="{Binding MoveCommand}" CommandParameter="Up"/>
+        <KeyBinding Key="Space" Command="{Binding StartCommand}"/>
+    </Page.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
